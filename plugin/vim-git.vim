@@ -1,18 +1,26 @@
 
 " -------------------------------------------------------------
 " ----------- git blame ---------------------------------------
-let s:cmd = ':exe "!fp=$(readlink -f %); cd $(dirname $fp); git blame -L " . line("%s") . "," . line("%s") . " $(basename $fp); cd -"<CR>'
+let s:cmd = ':exe "!fp=$(readlink -f %); cd $(dirname $fp); git blame -L " . line("%s") . "," . line("%s") . " $(basename $fp); cd -"'
+
+fun! Z_GitBlame(mode) range
+    if mode == 'v'
+        exe printf(s:cmd, "'<", "'>")
+    else
+        exe printf(s:cmd, ".", ".")
+    endif
+endf
 
 " In visual mode, git blame the selection
-exe 'vnoremap <unique> <leader>g ' . printf(s:cmd, "'<", "'>")
+vnoremap <unique> <leader>g :call Z_GitBlame('v')<CR>
 
 " In normal mode, git blame the current line
-exe 'nnoremap <unique> <leader>g ' . printf(s:cmd, ".", ".")
+nnoremap <unique> <leader>g :call Z_GitBlame('n')<CR>
 
 " -------------------------------------------------------------
 " ----------- git grep ---------------------------------------
 
-function! QuickGitGrep(isLiteral)
+function! Z_GitGrep(isLiteral)
     let oldpwd = getcwd()
     let reporoot = system('git rev-parse --show-toplevel')
 
@@ -60,9 +68,9 @@ function! s:RunShellCommand(cmdline)
 endfunction
 
 " In visual mode, press K to git grep the selection in the current repo
-vnoremap K y:call QuickGitGrep(1)<CR>
-" In normal mode, press K to git grep the selection in the current repo
-nnoremap K viwy:call QuickGitGrep(0)<CR>
+vnoremap K y:call Z_GitGrep(1)<CR>
+" In normal mode, press K to git grep the word under the cursor
+nnoremap K viwy:call Z_GitGrep(0)<CR>
 
 " 在新tab中打开文件. :h CTRL-W_F for more information
 nnoremap <C-T> ^<C-W>F
