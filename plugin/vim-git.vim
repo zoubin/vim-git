@@ -1,3 +1,14 @@
+" Tricks for using git in vim
+" Maintainer:	ZOU Bin <zoubin04@gmail.com>
+" Contributor: zoubin
+" Repository: https://github.com/zoubin/vim-git
+" License: MIT
+
+if exists('g:VimGitLoaded') || &cp
+  finish
+end
+let g:VimGitLoaded = 1
+
 
 " -------------------------------------------------------------
 " ----------- git blame ---------------------------------------
