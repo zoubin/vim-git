@@ -4,12 +4,12 @@ vim-git
 Tricks for using git in vim.
 
 ## Git Blame
-You can git blame in either *normal* or *visual* mode:
+You can git blame in both *normal* and *visual* modes:
 * normal mode: type `<leader>g`, and you are blaming the current line
 * visual mode: type  `<leader>g`, and you are blaming the visual block
 
 ## Git Grep
-You can git grep in both *normal* and *visual* mode:
+You can git grep in both *normal* and *visual* modes:
 * normal mode: type `K`, and you are git greping the word under the cursor
 * visual mode: type  `K`, and you are blaming the visual text
 
