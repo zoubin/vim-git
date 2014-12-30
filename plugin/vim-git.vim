@@ -1,14 +1,15 @@
 
 " -------------------------------------------------------------
 " ----------- git blame ---------------------------------------
-let s:cmd = ':exe "!fp=$(readlink -f %); cd $(dirname $fp); git blame -L " . line("%s") . "," . line("%s") . " $(basename $fp); cd -"'
-
 fun! Z_GitBlame(mode) range
     if a:mode == 'v'
-        exe printf(s:cmd, "'<", "'>")
+        let rangeStartLine = line("'<")
+        let rangeEndLine = line("'>")
     else
-        exe printf(s:cmd, ".", ".")
+        let rangeStartLine = line(".")
+        let rangeEndLine = rangeStartLine
     endif
+    exe '!fp=' . resolve(expand("%")) . ';cd $(dirname $fp); git blame -L ' . rangeStartLine . ',' . rangeEndLine . ' $(basename $fp); cd -'
 endf
 
 " In visual mode, git blame the selection
