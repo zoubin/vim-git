@@ -4,7 +4,7 @@
 let s:cmd = ':exe "!fp=$(readlink -f %); cd $(dirname $fp); git blame -L " . line("%s") . "," . line("%s") . " $(basename $fp); cd -"'
 
 fun! Z_GitBlame(mode) range
-    if mode == 'v'
+    if a:mode == 'v'
         exe printf(s:cmd, "'<", "'>")
     else
         exe printf(s:cmd, ".", ".")
