@@ -11,7 +11,7 @@ noremap <unique> <leader>g :call git#BlameRange()<CR>
 
 ```
 
-Suppose `<leader>` is `\`, then,
+Suppose `<leader>` is `\` (the default), then,
 * In normal mode: type `\g`, and you are blaming the current line
 * In visual mode: type  `\g`, and you are blaming the visual block
 
