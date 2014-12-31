@@ -6,7 +6,7 @@ Tricks for using git in vim.
 ## Git Blame
 Mapping should be completed in vimrc, like:
 
-```
+```vim
 noremap <unique> <leader>g :call git#BlameRange()<CR>
 
 ```
@@ -18,7 +18,7 @@ Then,
 ## Git Grep
 Mapping should be completed in vimrc, like:
 
-```
+```vim
 nnoremap <unique> K :call git#GrepCursorWord()<CR>
 vnoremap <unique> K y:call git#GrepText(getreg('"'))<CR>
 nnoremap <unique> <C-T> ^<C-W>F
@@ -35,7 +35,7 @@ Move to any line, and type `CTRL-T`, and a new split window will be opened conta
 ## Usage
 After installation, finish the mapping in vimrc, like:
 
-```
+```vim
 " for git blame
 noremap <unique> <leader>g :call git#BlameRange()<CR>
 
