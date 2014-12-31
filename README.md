@@ -11,9 +11,9 @@ noremap <unique> <leader>g :call git#BlameRange()<CR>
 
 ```
 
-Then,
-* In normal mode: type `<leader>g`, and you are blaming the current line
-* In visual mode: type  `<leader>g`, and you are blaming the visual block
+Suppose `<leader>` is `\\`, then,
+* In normal mode: type `\\g`, and you are blaming the current line
+* In visual mode: type  `\\g`, and you are blaming the visual block
 
 ## Git Grep
 Mapping should be completed in vimrc, like:
